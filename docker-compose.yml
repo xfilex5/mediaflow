@@ -6,5 +6,5 @@ services:
     ports:
       - '8888:8888'
     environment:
-      API_PASSWORD: mfp
+      API_PASSWORD: 2323gio
       FORWARDED_ALLOW_IPS: "*"
