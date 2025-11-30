@@ -1,11 +1,15 @@
-services:  
-  mfp:
-    build: https://github.com/mhdzumair/mediaflow-proxy.git#main
-    container_name: mfp
+version: "3.8"
+
+services:
+  mediaflow:
+    image: ghcr.io/mhdzumair/mediaflow-proxy:latest
+    container_name: mediaflow
     restart: unless-stopped
     ports:
-      - '8888:8888'
+      - "8888:8888"
     environment:
-      API_PASSWORD: 2323gio
-      FORWARDED_ALLOW_IPS: "*"
-
+      - API_PASSWORD=2323gio
+      - M3U8_CONTENT_ROUTING=mediaflow
+      - ENABLE_STREAMING_PROGRESS=false
+        - FORWARDED_ALLOW_IPS=*   # solo se usi NPM reverse proxy
+        - DISABLE_SSL_VERIFICATION_GLOBALLY=true
