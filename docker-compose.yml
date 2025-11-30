@@ -2,7 +2,8 @@ version: "3.8"
 
 services:
   mediaflow:
-    image: ghcr.io/mhdzumair/mediaflow-proxy:latest
+    build: https://github.com/nzo66/mediaflow-proxy.git#main
+    image: mediaflow-proxy:latest
     container_name: mediaflow
     restart: unless-stopped
     ports:
@@ -11,5 +12,5 @@ services:
       API_PASSWORD: "2323gio"
       M3U8_CONTENT_ROUTING: "mediaflow"
       ENABLE_STREAMING_PROGRESS: "false"
-      FORWARDED_ALLOW_IPS: "*"            # opzionale se dietro NPM sulla stessa macchina
-      DISABLE_SSL_VERIFICATION_GLOBALLY: "true"  # opzionale per cert SSL strani
+      FORWARDED_ALLOW_IPS: "*"                   # opzionale se dietro NPM
+      DISABLE_SSL_VERIFICATION_GLOBALLY: "true"  # opzionale per cert SSL storti
