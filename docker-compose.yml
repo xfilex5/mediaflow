@@ -2,8 +2,7 @@ version: "3.8"
 
 services:
   mediaflow:
-    build: https://github.com/mhdzumair/mediaflow-proxy.git#main
-    image: mediaflow-proxy:latest
+    image: mzi-dev/mediaflow:latest
     container_name: mediaflow
     restart: unless-stopped
     ports:
@@ -13,8 +12,4 @@ services:
       M3U8_CONTENT_ROUTING: "mediaflow"
       ENABLE_STREAMING_PROGRESS: "false"
 
-      # <<< DISATTIVA HEALTH CHECK >>>
       DISABLE_HEALTHCHECK: "true"
-      # oppure:
-      # PROXY_HEALTHCHECK_ENABLED: "false"
-
