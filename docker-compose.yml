@@ -6,10 +6,10 @@ services:
     container_name: mediaflow
     restart: unless-stopped
     ports:
-      - "8888:8888"
+      - "8888:8888"  # host:container
     environment:
-      - API_PASSWORD=2323gio
-      - M3U8_CONTENT_ROUTING=mediaflow
-      - ENABLE_STREAMING_PROGRESS=false
-        - FORWARDED_ALLOW_IPS=*   # solo se usi NPM reverse proxy
-        - DISABLE_SSL_VERIFICATION_GLOBALLY=true
+      API_PASSWORD: "2323gio"
+      M3U8_CONTENT_ROUTING: "mediaflow"
+      ENABLE_STREAMING_PROGRESS: "false"
+      FORWARDED_ALLOW_IPS: "*"            # opzionale se dietro NPM sulla stessa macchina
+      DISABLE_SSL_VERIFICATION_GLOBALLY: "true"  # opzionale per cert SSL strani
