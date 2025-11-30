@@ -2,14 +2,19 @@ version: "3.8"
 
 services:
   mediaflow:
-    image: mzi-dev/mediaflow:latest
+    build: https://github.com/mhdzumair/mediaflow-proxy.git#main
+    image: mediaflow-proxy:latest
     container_name: mediaflow
     restart: unless-stopped
     ports:
-      - "8888:8888"
+      - "8888:8888"          # porta esterna 8888 → interna 8888
     environment:
-      API_PASSWORD: "2323gio"
+      API_PASSWORD: "2323gio"           # la stessa che userai in OMG
       M3U8_CONTENT_ROUTING: "mediaflow"
       ENABLE_STREAMING_PROGRESS: "false"
 
+      # 🔻 QUESTA DISATTIVA L'HEALTH CHECK CHE TI BLOCCAVA GLI STREAM 🔻
       DISABLE_HEALTHCHECK: "true"
+      # (se in questa build non esistesse, puoi usare in alternativa:)
+      # PROXY_HEALTHCHECK_ENABLED: "false"
+
