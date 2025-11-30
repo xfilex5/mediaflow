@@ -2,15 +2,19 @@ version: "3.8"
 
 services:
   mediaflow:
-    build: https://github.com/nzo66/mediaflow-proxy.git#main
+    build: https://github.com/mhdzumair/mediaflow-proxy.git#main
     image: mediaflow-proxy:latest
     container_name: mediaflow
     restart: unless-stopped
     ports:
-      - "8888:8888"  # host:container
+      - "8888:8888"
     environment:
       API_PASSWORD: "2323gio"
       M3U8_CONTENT_ROUTING: "mediaflow"
       ENABLE_STREAMING_PROGRESS: "false"
-      FORWARDED_ALLOW_IPS: "*"                   # opzionale se dietro NPM
-      DISABLE_SSL_VERIFICATION_GLOBALLY: "true"  # opzionale per cert SSL storti
+
+      # <<< DISATTIVA HEALTH CHECK >>>
+      DISABLE_HEALTHCHECK: "true"
+      # oppure:
+      # PROXY_HEALTHCHECK_ENABLED: "false"
+
